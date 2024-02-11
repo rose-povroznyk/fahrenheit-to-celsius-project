@@ -1,0 +1,231 @@
+@font-face {
+  font-family: 'Rocher';
+  src: url(./fonts/RocherColorGX.ttf);
+}
+@font-face {
+  font-family: 'Protest Revolution';
+  src: url(./fonts/ProtestRevolution-Regular.ttf);
+}
+:root {
+  --bg-color: rgba(255, 255, 255, 0.8);
+  --white-color: #fff;
+  --green-color: #1f9b4a;
+  --red-color: #d5161f;
+  --orange-color: #ed9f0f;
+  --clr: #ff22bb;
+}
+
+/* Загальні стилі */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Protest Revolution', sans-serif;
+  font-size: 10px;
+}
+
+.first-section {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: start;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: var(--bg-color);
+  /* background: url(./img/fire.gif) center/cover no-repeat; */
+}
+
+/* Стилі для заголовка */
+h1 {
+  font-family: 'Rocher', 'Protest Revolution', sans-serif;
+  color: #8b0000;
+  font-size: 4rem;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+h2 {
+  position: absolute;
+  top: 13%;
+  font-size: 1.5rem;
+  color: #8b0000;
+  text-align: center;
+}
+
+/* Стилі для зображень вчених  */
+.left-scientist,
+.right-scientist {
+  position: absolute;
+  height: 75%;
+  bottom: 0;
+}
+
+.left-scientist {
+  left: 0;
+}
+.right-scientist {
+  right: 0;
+}
+
+/* Стилі контейнера з інпутами */
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.container img {
+  height: 21rem;
+  margin-top: 8rem;
+}
+
+label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 1rem 2rem;
+  background: var(--white-color);
+  transition: 1s;
+  overflow: hidden;
+}
+
+#green:hover {
+  background: var(--green-color);
+  box-shadow: 0 0 10px var(--green-color), 0 0 30px var(--green-color),
+    0 0 60px var(--green-color), 0 0 100px var(--green-color);
+}
+
+label:hover {
+  background: var(--clr);
+  box-shadow: 0 0 10px var(--clr), 0 0 30px var(--clr), 0 0 60px var(--clr),
+    0 0 100px var(--clr);
+}
+
+label::before {
+  content: '';
+  position: absolute;
+  width: 3rem;
+  height: 600%;
+  background: var(--red-color);
+  transition: 1s;
+  animation: animate 5s linear infinite;
+}
+
+#green::before {
+  background: var(--green-color);
+}
+
+label:hover::before {
+  width: 120%;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+label::after {
+  content: '';
+  position: absolute;
+  background: var(--white-color);
+  inset: 4px;
+  transition: 0.5s;
+}
+
+label:hover::after {
+  background: var(--red-color);
+}
+#green:hover::after {
+  background: var(--green-color);
+}
+
+input {
+  border: none;
+  font-size: 1.3rem;
+  width: 12rem;
+  z-index: 5;
+}
+
+input::placeholder {
+  text-align: center;
+  color: var(--orange-color);
+  font-weight: bold;
+}
+input:focus {
+  outline: none;
+}
+/* Адаптація */
+
+@media screen and (max-width: 1024px) {
+  .container img {
+    height: 16rem;
+    margin-top: 8rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container img {
+    order: 1;
+    height: 8rem;
+    margin-top: 8rem;
+    margin-bottom: 2rem;
+  }
+  .container {
+    flex-direction: column;
+  }
+  label {
+    order: 2;
+    margin-bottom: 1rem;
+  }
+  .celcius {
+    order: 3;
+  }
+  h1 {
+    font-size: 3rem;
+  }
+  input {
+    width: 6rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 0.8rem;
+    top: 8%;
+  }
+  .container img {
+    margin-top: 5rem;
+    height: 7rem;
+    margin-bottom: 2rem;
+  }
+
+  .left-scientist,
+  .right-scientist {
+    height: 45%;
+  }
+
+  input {
+    width: 2.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  h2 {
+    top: 13%;
+  }
+}
